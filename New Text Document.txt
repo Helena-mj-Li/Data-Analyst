@@ -1,0 +1,120 @@
+plt.figure(figsize=(16,8))
+new['order_number'].value_counts().head(5).plot.bar()
+plt.show()
+
+
+# another way to show bar chart
+plt.figure(figsize=(16,8))
+order_number = new['order_number'].value_counts().reset_index()
+plt.bar(order_number['index'][0:5], order_number['order_number'][0:5])
+
+order_number 是sequential number, 比如一个人定了5个order, 它的顺序，就是按照
+ 1 2 3 4 5 的时间顺序来排列。 sequential number for one user_id
+order_id 是订单号
+
+SELECT city, count(*)
+FROM studnets
+GROUP BY city
+
+
+
+
+SELECT * FROM studnets, courses;  #两个表相乘的结果。
+
+
+
+SELECT s.studentId AS studnetId, c.courseId AS courseId
+FROM studnets AS s, courses AS c;
+
+
+
+select s.studentid, c.coursename
+from students as s, courses as c where s.courseid = c.courseid;
+
+
+
+
+select s.studentid, c.coursename
+from students as s
+inner join courses as c on s.courseid = c.courseid;
+
+
+
+count() 计数， group by 分类 = Excel 里 Pivot Table
+
+
+
+
+SELECT 
+
+
+
+
+
+
+
+
+
+
+
+
+1
+SELECT order_number, count(order_number)
+FROM new
+ORDER BY count(order_number) DESC;
+
+
+2
+SELECT product_id,product_name
+FROM new
+ORDER BY count(add_to_cart_order) DESC;
+
+
+3
+SELECT product_id, count(*)
+FROM new
+WHERE add_to_cart_number = 1;  
+ORDER BY count(product_id) DESC;
+
+
+4
+SELECT order_dow, count(order_dow)
+FROM new
+GROUP BY order_dow
+ORDER BY count(order_dow) DESC;
+
+
+SELECT order_hour_of_day, count(order_hour_of_day)
+FROM new
+WHERE 
+GROUP BY order_hour_of_day
+ORDER BY count(order_hour_of_day) DESC;
+
+
+SELECT days_since_prior_order, count(days_since_prior_order)
+FROM new
+WHERE 
+GROUP BY days_since_prior_order
+ORDER BY count(days_since_prior_order) DESC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
